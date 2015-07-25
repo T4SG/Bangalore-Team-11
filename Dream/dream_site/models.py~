@@ -310,4 +310,4 @@ class Goals(models.Model):
     goal_id =       models.AutoField( primary_key = True )
     goal_name =     models.CharField( default = '', max_length = 254 )
     goal_achieved = models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])   
-    goal_date =     models.DateTimeField(default = datetime.now(), blank = True)
+    goal_date =     models.DateTimeField( default = django.utils.timezone.now, blank = True)

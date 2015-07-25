@@ -278,7 +278,7 @@ class Team(models.Model):
     team_id =                       models.AutoField( primary_key = True )
     mentor_id =                     models.ForeignKey( Mentor )
     mentee_id =                     models.ForeignKey( Mentee )
-    team_since =                    models.DateTimeField( default = django.utils.timezone.now, blank = True)
+    team_since =                    models.DateTimeField( default = django.utils.timezone.now, blank = True )
     message_exchange_frequency =    models.PositiveSmallIntegerField( default = 0 )  # Frequency of message exchanges between Mentor and Mentee
     mentor_response_time =          models.PositiveSmallIntegerField( default = 0  )        # Average response time in between messages sent by Mentor
     mentee_response_time =          models.PositiveSmallIntegerField( default = 0  )        # Average response time in between messages sent by Mentee
@@ -288,8 +288,8 @@ class Team(models.Model):
 class Meetings(models.Model):
     team_id =                   models.ForeignKey( Team )
     meeting_id =                models.AutoField( primary_key = True )    
-    mentor_meeting_rating =     models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])
-    mentee_meeting_rating =     models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])   
+    mentor_meeting_rating =     models.IntegerField( default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)] )
+    mentee_meeting_rating =     models.IntegerField( default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)] )   
     meeting_date = models.DateTimeField( default = django.utils.timezone.now ,blank = True)
     TEL = 'Telephone'
     ONL = 'Online'
@@ -309,5 +309,5 @@ class Goals(models.Model):
     team_id =       models.ForeignKey( Team )
     goal_id =       models.AutoField( primary_key = True )
     goal_name =     models.CharField( default = '', max_length = 254 )
-    goal_achieved = models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])   
-    goal_date =     models.DateTimeField( default = django.utils.timezone.now, blank = True)
+    goal_achieved = models.IntegerField( default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)] )   
+    goal_date =     models.DateTimeField( default = django.utils.timezone.now, blank = True )
