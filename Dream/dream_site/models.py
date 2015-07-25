@@ -211,9 +211,23 @@ class Team(models.Model):
     team_id =                       models.AutoField( primary_key = True )
     mentor_id =                     models.ForeignKey( Mentor )
     mentee_id =                     models.ForeignKey( Mentee )
-    number_of_meetings =            models.IntegerField( default = 0 )
     message_exchange_frequency =    models.PositiveSmallIntegerField( default = 0 )  # Frequency of message exchanges between Mentor and Mentee
     mentor_response_time =          models.PositiveSmallIntegerField( default = 0  )        # Average response time in between messages sent by Mentor
     mentee_response_time =          models.PositiveSmallIntegerField( default = 0  )        # Average response time in between messages sent by Mentee
     
-    
+class Goals(models.Model):
+    team_id =                   models.ForeignKey( Team )
+    goal_id =                   models.AutoField( primary_key = True )
+    mentor_meeting_rating =     models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])
+    mentee_meeting_rating =     models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])   
+    TEL = 'Telephone'
+    ONL = 'Online'
+    F2F = 'Face to Face'
+    MEETING_METHODS = (
+        (TEL,'Telephone'), 
+        (ONL,'Online' ),
+        (F2F,'Face to Face'),
+    )
+    meeting = models.CharField( max_length = 15, 
+                              choices = MEETING_METHODS,
+                              default = F2F )
