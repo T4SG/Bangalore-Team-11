@@ -13,6 +13,6 @@ Done by :
           Meghdeep Ray
           Rowan Menezes
           Yamini Garikipati
-          Akshata Bodapaly
+          Akshata Bodapally
           Bhargavi Kotapati
 </pre>

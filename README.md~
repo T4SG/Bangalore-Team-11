@@ -10,9 +10,9 @@ Working for Dream School Foundation to develop a Mentor-Mentee management system
 
 <pre>
 Done by :
-     Meghdeep Ray
-     Rowan Menezes
-     Yamini Garikipati
-     Akshata Bodapaly
-     Bhargavi Kotapati
+          Meghdeep Ray
+          Rowan Menezes
+          Yamini Garikipati
+          Akshata Bodapaly
+          Bhargavi Kotapati
 </pre>
