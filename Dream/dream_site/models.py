@@ -90,6 +90,35 @@ class Mentor(models.Model):
                                       choices = COURSE_CHOICES,
                                       default = CSE )
     
+    H1 = 'Reading'
+    H2 = 'Sports'
+    H3 = 'Politics'
+    H4 = 'Computers'
+    H5 = 'Geography'
+    H6 = 'Wildlife'
+    H7 = 'Dance'
+    H8 = 'Drawing'
+    H9 = 'Acting'
+    H10 = 'Cooking'
+    H11 = 'Writing'
+    H12 = 'Video Games'
+
+    HOBBY_CHOICES = (
+        (H1,'Reading'), 
+        (H2,'Sports' ),
+        (H3,'Politics'), 
+        (H4,'Computers' ),
+        (H5,'Geography'), 
+        (H6,'Wildlife' ),
+        (H7,'Dance'), 
+        (H8,'Drawing' ),
+        (H9,'Acting'), 
+        (H10,'Cooking' ),
+        (H11,'Writing'),
+        (H12,'Video Games')
+    )
+    hobby = models.CharField( max_length = 20,choices = HOBBY_CHOICES, default = H1 )
+    
     phone_number =      models.CharField( default = '', max_length = 20 )
     email =             models.CharField( default = '', max_length = 254 )
     company =           models.CharField( default = '', max_length = 254 )
@@ -105,7 +134,8 @@ class Mentor(models.Model):
     
     username =          models.CharField( default = '', max_length = 254 )
     password =          models.CharField( default = '', max_length = 254 )
-    
+
+#####################################################################################################################################    
     
 class Mentee(models.Model):
     mentee_id =     models.AutoField( primary_key = True )
@@ -192,6 +222,35 @@ class Mentee(models.Model):
     college_degree = models.CharField( max_length = 50,
                                       choices = COURSE_CHOICES,
                                       default = CSE )
+
+    H1 = 'Reading'
+    H2 = 'Sports'
+    H3 = 'Politics'
+    H4 = 'Computers'
+    H5 = 'Geography'
+    H6 = 'Wildlife'
+    H7 = 'Dance'
+    H8 = 'Drawing'
+    H9 = 'Acting'
+    H10 = 'Cooking'
+    H11 = 'Writing'
+    H12 = 'Video Games'
+
+    HOBBY_CHOICES = (
+        (H1,'Reading'), 
+        (H2,'Sports' ),
+        (H3,'Politics'), 
+        (H4,'Computers' ),
+        (H5,'Geography'), 
+        (H6,'Wildlife' ),
+        (H7,'Dance'), 
+        (H8,'Drawing' ),
+        (H9,'Acting'), 
+        (H10,'Cooking' ),
+        (H11,'Writing'),
+        (H12,'Video Games')
+    )
+    hobby = models.CharField( max_length = 20,choices = HOBBY_CHOICES, default = H1 )
                               
     rating =            models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])
     number_of_ratings = models.IntegerField(default = 0)
@@ -204,13 +263,15 @@ class Mentee(models.Model):
     #college_degree =    models.CharField( default = '', max_length = 254 )
     username =          models.CharField( default = '', max_length = 254 )
     password =          models.CharField( default = '', max_length = 254 )
-    
+
+#####################################################################################################################################    
     
 class Admin(models.Model):
     admin_id = models.AutoField( primary_key = True )
     username = models.CharField( default = '', max_length = 254 )
     password = models.CharField( default = '', max_length = 254 )
-    
+
+#####################################################################################################################################    
     
 class Team(models.Model):
     team_id =                       models.AutoField( primary_key = True )
@@ -220,6 +281,8 @@ class Team(models.Model):
     message_exchange_frequency =    models.PositiveSmallIntegerField( default = 0 )  # Frequency of message exchanges between Mentor and Mentee
     mentor_response_time =          models.PositiveSmallIntegerField( default = 0  )        # Average response time in between messages sent by Mentor
     mentee_response_time =          models.PositiveSmallIntegerField( default = 0  )        # Average response time in between messages sent by Mentee
+
+#####################################################################################################################################
     
 class Meetings(models.Model):
     team_id =                   models.ForeignKey( Team )
@@ -238,6 +301,8 @@ class Meetings(models.Model):
     meeting = models.CharField( max_length = 15, 
                               choices = MEETING_METHODS,
                               default = F2F )
+                              
+#####################################################################################################################################                              
                               
 class Goals(models.Model):
     team_id =       models.ForeignKey( Team )
