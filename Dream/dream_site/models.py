@@ -6,7 +6,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Mentor(models.Model):
     mentor_id =     models.AutoField( primary_key = True )
     name =          models.CharField( default = '', max_length = 254 )
-    age =           models.IntegerField(default = 99, validators=[MinValueValidator(0), MaxValueValidator(5)])
+    age =           models.IntegerField( validators=[MinValueValidator(0), MaxValueValidator(5)])
     native_city =   models.CharField( default = '',max_length = 254 )
     current_city =  models.CharField( default = '', max_length = 254 )
     languages =     models.CharField( default = '', max_length = 254 )
@@ -38,7 +38,7 @@ class Mentor(models.Model):
 class Mentee(models.Model):
     mentee_id =     models.AutoField( primary_key = True )
     name =          models.CharField( default = '', max_length = 254 )
-    age =           models.IntegerField(default = 99, validators=[MinValueValidator(0), MaxValueValidator(5)])
+    age =           models.IntegerField( validators=[MinValueValidator(0), MaxValueValidator(5)])
     native_city =   models.CharField( default = '', max_length = 254 )
     current_city =  models.CharField( default = '', max_length = 254 )
     languages =     models.CharField( default = '', max_length = 254 )
