@@ -24,8 +24,56 @@ class Mentor(models.Model):
     phone_number = models.CharField( max_length = 20 )
     email = models.CharField( max_length = 254 )
     company = models.CharField( max_length = 254 )
+    phone_number = models.CharField( max_length = 20 )
+    address = models.CharField( max_length = 254 )
     area = models.CharField( max_length = 254 )                           # Area lived in, example : Kormangala, Indiranagar, Whitefield
     rating = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(100)])
+    college_degree = models.CharField( max_length = 254 )
     username = models.CharField( max_length = 254 )
     password = models.CharField( max_length = 254 )
+    
+    
+class Mentee(models.Model):
+    mentee_id = models.AutoField( primary_key = True )
+    name = models.CharField( max_length = 254 )
+    age = models.IntegerField( max_length = 2 )
+    native_city = models.CharField( max_length = 254 )
+    current_city = models.CharField( max_length = 254 )
+    
+    # Module to Determine Gender
+    M = 'Male'
+    F = 'Female'
+    GENDER_CHOICES = (
+        (M,'Male'), 
+        (F,'Female' ),
+    )
+    gender = models.CharField( max_length = 6, 
+                              choices = GENDER_CHOICES,
+                              default = M )
+                              
+    college = models.CharField( max_length = 254 )
+    phone_number = models.CharField( max_length = 20 )
+    email = models.CharField( max_length = 254 )
+    area = models.CharField( max_length = 254 )                           # Area lived in, example : Kormangala, Indiranagar, Whitefield    
+    address = models.CharField( max_length = 20 )
+    email = models.CharField( max_length = 254 )
+    college_degree = models.CharField( max_length = 254 )
+    username = models.CharField( max_length = 254 )
+    password = models.CharField( max_length = 254 )
+    
+    
+class Admin(models.Model):
+    admin_id = models.AutoField( primary_key = True )
+    username = models.CharField( max_length = 254 )
+    password = models.CharField( max_length = 254 )
+    
+    
+class Team(models.Model):
+    team_id = models.AutoField( primary_key = True )
+    mentor_id = models.ForeignKey( Mentor )
+    mentee_id = models.ForeignKey( Mentee )
+    message_exchange_frequency = models.IntegerField( max_length = 2 )  # Frequency of message exchanges between Mentor and Mentee
+    mentor_response_time = models.IntegerField( max_length = 2 )        # Average response time in between messages sent by Mentor
+    mentee response_time = models.IntegerField( max_length = 2 )        # Average response time in between messages sent by Mentee
+    
     
