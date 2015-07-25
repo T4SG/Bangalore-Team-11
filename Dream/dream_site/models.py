@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from datetime import datetime
+import django.utils.timezone
 # Create your models here.
 
 class Mentor(models.Model):
@@ -277,7 +278,7 @@ class Team(models.Model):
     team_id =                       models.AutoField( primary_key = True )
     mentor_id =                     models.ForeignKey( Mentor )
     mentee_id =                     models.ForeignKey( Mentee )
-    team_since =                    models.DateTimeField(default = datetime.now(), blank = True)
+    team_since =                    models.DateTimeField( default = django.utils.timezone.now, blank = True)
     message_exchange_frequency =    models.PositiveSmallIntegerField( default = 0 )  # Frequency of message exchanges between Mentor and Mentee
     mentor_response_time =          models.PositiveSmallIntegerField( default = 0  )        # Average response time in between messages sent by Mentor
     mentee_response_time =          models.PositiveSmallIntegerField( default = 0  )        # Average response time in between messages sent by Mentee
@@ -289,7 +290,7 @@ class Meetings(models.Model):
     meeting_id =                models.AutoField( primary_key = True )    
     mentor_meeting_rating =     models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])
     mentee_meeting_rating =     models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])   
-    meeting_date = models.DateTimeField(default = datetime.now() ,blank = True)
+    meeting_date = models.DateTimeField( default = django.utils.timezone.now ,blank = True)
     TEL = 'Telephone'
     ONL = 'Online'
     F2F = 'Face to Face'
@@ -309,4 +310,4 @@ class Goals(models.Model):
     goal_id =       models.AutoField( primary_key = True )
     goal_name =     models.CharField( default = '', max_length = 254 )
     goal_achieved = models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])   
-    goal_date =     models.DateTimeField(default = datetime.now(), blank = True)
+    goal_date =     models.DateTimeField( default = django.utils.timezone.now, blank = True)
