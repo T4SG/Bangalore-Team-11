@@ -1,6 +1,6 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
-
+from datetime import datetime
 # Create your models here.
 
 class Mentor(models.Model):
@@ -96,8 +96,13 @@ class Mentor(models.Model):
     phone_number =      models.CharField( default = '', max_length = 20 )
     address =           models.CharField( default = '', max_length = 254 )
     area =              models.CharField( default = '', max_length = 254 )                           # Area lived in, example : Kormangala, Indiranagar, Whitefield
-    rating =            models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])
+    rating_communication =  models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])
+    rating_academics =      models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])
+    rating_cocurricular =   models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])
+    rating_overall =        models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])
+    
     number_of_ratings = models.IntegerField(default = 0)
+    
     username =          models.CharField( default = '', max_length = 254 )
     password =          models.CharField( default = '', max_length = 254 )
     
@@ -215,11 +220,12 @@ class Team(models.Model):
     mentor_response_time =          models.PositiveSmallIntegerField( default = 0  )        # Average response time in between messages sent by Mentor
     mentee_response_time =          models.PositiveSmallIntegerField( default = 0  )        # Average response time in between messages sent by Mentee
     
-class Goals(models.Model):
+class Meetings(models.Model):
     team_id =                   models.ForeignKey( Team )
-    goal_id =                   models.AutoField( primary_key = True )
+    meeting_id =                models.AutoField( primary_key = True )    
     mentor_meeting_rating =     models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])
     mentee_meeting_rating =     models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])   
+    meeting_date = models.DateTimeField(default = datetime.now() ,blank = True)
     TEL = 'Telephone'
     ONL = 'Online'
     F2F = 'Face to Face'
@@ -231,3 +237,10 @@ class Goals(models.Model):
     meeting = models.CharField( max_length = 15, 
                               choices = MEETING_METHODS,
                               default = F2F )
+                              
+class Goals(models.Model):
+    team_id =       models.ForeignKey( Team )
+    goal_id =       models.AutoField( primary_key = True )
+    goal_name =     models.CharField( default = '', max_length = 254 )
+    goal_achieved = models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])   
+    goal_date =     models.DateTimeField(default = datetime.now(), blank = True)
