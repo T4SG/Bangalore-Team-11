@@ -116,7 +116,7 @@ class Mentor(models.Model):
         (H9,'Acting'), 
         (H10,'Cooking' ),
         (H11,'Writing'),
-        (H12,'Video Games')
+        (H12,'Video Games'),
     )
     hobby = models.CharField( max_length = 20,choices = HOBBY_CHOICES, default = H1 )
     
@@ -249,7 +249,7 @@ class Mentee(models.Model):
         (H9,'Acting'), 
         (H10,'Cooking' ),
         (H11,'Writing'),
-        (H12,'Video Games')
+        (H12,'Video Games'),
     )
     hobby = models.CharField( max_length = 20,choices = HOBBY_CHOICES, default = H1 )
                               
