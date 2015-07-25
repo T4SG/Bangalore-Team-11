@@ -6,7 +6,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 class Mentor(models.Model):
     mentor_id = models.AutoField( primary_key = True )
     name = models.CharField( max_length = 254 )
-    age = models.IntegerField( max_length = 2 )
+    age = models.IntegerField( )
     native_city = models.CharField( max_length = 254 )
     current_city = models.CharField( max_length = 254 )
     
@@ -36,7 +36,7 @@ class Mentor(models.Model):
 class Mentee(models.Model):
     mentee_id = models.AutoField( primary_key = True )
     name = models.CharField( max_length = 254 )
-    age = models.IntegerField( max_length = 2 )
+    age = models.IntegerField( )
     native_city = models.CharField( max_length = 254 )
     current_city = models.CharField( max_length = 254 )
     
@@ -54,6 +54,7 @@ class Mentee(models.Model):
     college = models.CharField( max_length = 254 )
     phone_number = models.CharField( max_length = 20 )
     email = models.CharField( max_length = 254 )
+    area = models.CharField( max_length = 254 )                           # Area lived in, example : Kormangala, Indiranagar, Whitefield    
     address = models.CharField( max_length = 20 )
     email = models.CharField( max_length = 254 )
     college_degree = models.CharField( max_length = 254 )
@@ -61,10 +62,18 @@ class Mentee(models.Model):
     password = models.CharField( max_length = 254 )
     
     
+class Admin(models.Model):
+    admin_id = models.AutoField( primary_key = True )
+    username = models.CharField( max_length = 254 )
+    password = models.CharField( max_length = 254 )
     
     
-    
-    
-    
+class Team(models.Model):
+    team_id = models.AutoField( primary_key = True )
+    mentor_id = models.ForeignKey( Mentor )
+    mentee_id = models.ForeignKey( Mentee )
+    message_exchange_frequency = models.PositiveSmallIntegerField( )  # Frequency of message exchanges between Mentor and Mentee
+    mentor_response_time = models.PositiveSmallIntegerField( )        # Average response time in between messages sent by Mentor
+    mentee_response_time = models.PositiveSmallIntegerField( )        # Average response time in between messages sent by Mentee
     
     
