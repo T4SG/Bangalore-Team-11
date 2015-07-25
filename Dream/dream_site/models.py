@@ -22,6 +22,43 @@ class Mentor(models.Model):
     gender = models.CharField( max_length = 6, 
                               choices = GENDER_CHOICES,
                               default = M )
+
+    # Module to Determine College Degree
+    CSE =   'Computer Science Engineering'
+    ME =    'Mechanical Engineering'
+    EC =    'Electronics Engineering'
+    EEE =   'Electrical Engineering'
+    BT =    'Biotechnology'
+    TE =    'Telecommunications Engineering'
+    PH =    'Physics Honours'
+    CE =    'Chemistry Honours'
+    EY =	'Economics'
+    FIN =   'Finance'
+    AC =    'Accounting'
+    MED =   'Medicine'
+    HH =    'History Honours'
+    SH =    'Sociology Honours'
+    EE =    'English Honours'
+    COURSE_CHOICES = (
+        (CSE,   'Computer Science Engineering'), 
+        (ME,    'Mechanical Engineering'),
+        (EC,    'Electronics Engineering'),
+        (EEE,   'Electrical Engineering'),
+        (BT,    'Biotechnology'),
+        (TE,    'Telecommunications Engineering'),
+        (PH,    'Physics Honours'),
+        (CE,    'Chemistry Honours'),
+        (EY,    'Economics'),
+        (FIN,   'Finance'),
+        (AC,    'Accounting'),
+        (MED,   'Medicine'),
+        (HH,    'History Honours'),
+        (SH,    'Sociology Honours'),
+        (EE,    'English Honours'),
+    )
+    college_degree = models.CharField( max_length = 50,
+                                      choices = COURSE_CHOICES,
+                                      default = CSE )
     
     phone_number =      models.CharField( default = '', max_length = 20 )
     email =             models.CharField( default = '', max_length = 254 )
@@ -30,7 +67,6 @@ class Mentor(models.Model):
     address =           models.CharField( default = '', max_length = 254 )
     area =              models.CharField( default = '', max_length = 254 )                           # Area lived in, example : Kormangala, Indiranagar, Whitefield
     rating =            models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])
-    college_degree =    models.CharField( default = '', max_length = 254 )
     username =          models.CharField( default = '', max_length = 254 )
     password =          models.CharField( default = '', max_length = 254 )
     
@@ -55,6 +91,43 @@ class Mentee(models.Model):
                               choices = GENDER_CHOICES,
                               default = M )
                               
+    # Module to Determine College Degree
+    CSE =   'Computer Science Engineering'
+    ME =    'Mechanical Engineering'
+    EC =    'Electronics Engineering'
+    EEE =   'Electrical Engineering'
+    BT =    'Biotechnology'
+    TE =    'Telecommunications Engineering'
+    PH =    'Physics Honours'
+    CE =    'Chemistry Honours'
+    EY =	'Economics'
+    FIN =   'Finance'
+    AC =    'Accounting'
+    MED =   'Medicine'
+    HH =    'History Honours'
+    SH =    'Sociology Honours'
+    EE =    'English Honours'
+    COURSE_CHOICES = (
+        (CSE,   'Computer Science Engineering'), 
+        (ME,    'Mechanical Engineering'),
+        (EC,    'Electronics Engineering'),
+        (EEE,   'Electrical Engineering'),
+        (BT,    'Biotechnology'),
+        (TE,    'Telecommunications Engineering'),
+        (PH,    'Physics Honours'),
+        (CE,    'Chemistry Honours'),
+        (EY,    'Economics'),
+        (FIN,   'Finance'),
+        (AC,    'Accounting'),
+        (MED,   'Medicine'),
+        (HH,    'History Honours'),
+        (SH,    'Sociology Honours'),
+        (EE,    'English Honours'),
+    )
+    college_degree = models.CharField( max_length = 50,
+                                      choices = COURSE_CHOICES,
+                                      default = CSE )
+                              
     rating =            models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])
     college =           models.CharField( default = '', max_length = 254 )
     phone_number =      models.CharField( default = '', max_length = 20 )
@@ -62,7 +135,7 @@ class Mentee(models.Model):
     area =              models.CharField( default = '', max_length = 254 )                           # Area lived in, example : Kormangala, Indiranagar, Whitefield    
     address =           models.CharField( default = '', max_length = 20 )
     email =             models.CharField( default = '', max_length = 254 )
-    college_degree =    models.CharField( default = '', max_length = 254 )
+    #college_degree =    models.CharField( default = '', max_length = 254 )
     username =          models.CharField( default = '', max_length = 254 )
     password =          models.CharField( default = '', max_length = 254 )
     
