@@ -9,7 +9,6 @@ class Mentor(models.Model):
     age =           models.IntegerField( validators=[MinValueValidator(0), MaxValueValidator(5)])
     native_city =   models.CharField( default = '',max_length = 254 )
     current_city =  models.CharField( default = '', max_length = 254 )
-    languages =     models.CharField( default = '', max_length = 254 )
     hobbies =       models.CharField( default = '', max_length = 254 )
     
     # Module to Determine Gender
@@ -22,6 +21,37 @@ class Mentor(models.Model):
     gender = models.CharField( max_length = 6, 
                               choices = GENDER_CHOICES,
                               default = M )
+
+    A = 'Assamese'
+    B = 'Bengali'
+    G = 'Gujarati'
+    H = 'Hindi'
+    K = 'Kannada'
+    E = 'English'
+    M = 'Marathi'
+    P = 'Punjabi'
+    S = 'Sanskrit'
+    Ta = 'Tamil'
+    U = 'Urdu'
+    Te = 'Telugu'                          
+    LANGUAGE_CHOICES = (
+                    (A,'Assamese'), 
+                    (B,'Bengali' ),
+                    (G,'Gujarati'), 
+                    (H,'Hindi' ),
+                    (K,'Kannada'), 
+                    (M,'Marathi' ),
+                    (P,'Punjabi'), 
+                    (S,'Sanskrit' ),
+                    (Ta,'Tamil'), 
+                    (U,'Urdu' ),
+                    (Te,'Telugu'),
+                    (E,'English'),
+    )
+    primary_language =      models.CharField( max_length = 20,choices = LANGUAGE_CHOICES, default = E )                          
+    secondary_language =    models.CharField( max_length = 20,choices = LANGUAGE_CHOICES, default = E )
+    other_languages =       models.CharField( default = '', max_length = 254 )
+
 
     # Module to Determine College Degree
     CSE =   'Computer Science Engineering'

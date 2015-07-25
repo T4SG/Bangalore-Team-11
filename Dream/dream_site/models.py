@@ -97,6 +97,7 @@ class Mentor(models.Model):
     address =           models.CharField( default = '', max_length = 254 )
     area =              models.CharField( default = '', max_length = 254 )                           # Area lived in, example : Kormangala, Indiranagar, Whitefield
     rating =            models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])
+    number_of_ratings = models.IntegerField(default = 0)
     username =          models.CharField( default = '', max_length = 254 )
     password =          models.CharField( default = '', max_length = 254 )
     
@@ -188,6 +189,7 @@ class Mentee(models.Model):
                                       default = CSE )
                               
     rating =            models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])
+    number_of_ratings = models.IntegerField(default = 0)
     college =           models.CharField( default = '', max_length = 254 )
     phone_number =      models.CharField( default = '', max_length = 20 )
     email =             models.CharField( default = '', max_length = 254 )
@@ -209,6 +211,7 @@ class Team(models.Model):
     team_id =                       models.AutoField( primary_key = True )
     mentor_id =                     models.ForeignKey( Mentor )
     mentee_id =                     models.ForeignKey( Mentee )
+    number_of_meetings =            models.IntegerField( default = 0 )
     message_exchange_frequency =    models.PositiveSmallIntegerField( default = 0 )  # Frequency of message exchanges between Mentor and Mentee
     mentor_response_time =          models.PositiveSmallIntegerField( default = 0  )        # Average response time in between messages sent by Mentor
     mentee_response_time =          models.PositiveSmallIntegerField( default = 0  )        # Average response time in between messages sent by Mentee
