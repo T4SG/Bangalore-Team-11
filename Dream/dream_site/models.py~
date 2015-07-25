@@ -7,10 +7,9 @@ import django.utils.timezone
 class Mentor(models.Model):
     mentor_id =     models.AutoField( primary_key = True )
     name =          models.CharField( default = '', max_length = 254 )
-    age =           models.IntegerField( validators=[MinValueValidator(0), MaxValueValidator(5)])
+    age =           models.IntegerField( validators=[MinValueValidator(0), MaxValueValidator(90)])
     native_city =   models.CharField( default = '',max_length = 254 )
     current_city =  models.CharField( default = '', max_length = 254 )
-    hobbies =       models.CharField( default = '', max_length = 254 )
     
     # Module to Determine Gender
     M = 'Male'
@@ -118,7 +117,10 @@ class Mentor(models.Model):
         (H11,'Writing'),
         (H12,'Video Games'),
     )
-    hobby = models.CharField( max_length = 20,choices = HOBBY_CHOICES, default = H1 )
+    hobby_1 = models.CharField( max_length = 20,choices = HOBBY_CHOICES, default = H1 )
+    hobby_2 = models.CharField( max_length = 20,choices = HOBBY_CHOICES, default = H1 )
+    hobby_3 = models.CharField( max_length = 20,choices = HOBBY_CHOICES, default = H1 )
+    hobby_4 = models.CharField( max_length = 20,choices = HOBBY_CHOICES, default = H1 )
     
     phone_number =      models.CharField( default = '', max_length = 20 )
     email =             models.CharField( default = '', max_length = 254 )
@@ -136,15 +138,17 @@ class Mentor(models.Model):
     username =          models.CharField( default = '', max_length = 254 )
     password =          models.CharField( default = '', max_length = 254 )
 
+    def __str__(self):
+        return ( str( self.pk ) + " - " + self.name )
+
 #####################################################################################################################################    
     
 class Mentee(models.Model):
     mentee_id =     models.AutoField( primary_key = True )
     name =          models.CharField( default = '', max_length = 254 )
-    age =           models.IntegerField( validators=[MinValueValidator(0), MaxValueValidator(5)])
+    age =           models.IntegerField( validators=[MinValueValidator(0), MaxValueValidator(35)])
     native_city =   models.CharField( default = '', max_length = 254 )
     current_city =  models.CharField( default = '', max_length = 254 )
-    hobbies =       models.CharField( default = '', max_length = 254 )
     
     # Module to Determine Gender
     M = 'Male'
@@ -251,7 +255,10 @@ class Mentee(models.Model):
         (H11,'Writing'),
         (H12,'Video Games'),
     )
-    hobby = models.CharField( max_length = 20,choices = HOBBY_CHOICES, default = H1 )
+    hobby_1 = models.CharField( max_length = 20,choices = HOBBY_CHOICES, default = H1 )
+    hobby_2 = models.CharField( max_length = 20,choices = HOBBY_CHOICES, default = H1 )
+    hobby_3 = models.CharField( max_length = 20,choices = HOBBY_CHOICES, default = H1 )
+    hobby_4 = models.CharField( max_length = 20,choices = HOBBY_CHOICES, default = H1 )
                               
     rating =            models.IntegerField(default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)])
     number_of_ratings = models.IntegerField(default = 0)
@@ -261,9 +268,11 @@ class Mentee(models.Model):
     area =              models.CharField( default = '', max_length = 254 )                           # Area lived in, example : Kormangala, Indiranagar, Whitefield    
     address =           models.CharField( default = '', max_length = 20 )
     email =             models.CharField( default = '', max_length = 254 )
-    #college_degree =    models.CharField( default = '', max_length = 254 )
     username =          models.CharField( default = '', max_length = 254 )
     password =          models.CharField( default = '', max_length = 254 )
+    
+    def __str__(self):
+        return ( str( self.pk ) + " - " + self.name )
 
 #####################################################################################################################################    
     
@@ -271,6 +280,9 @@ class Admin(models.Model):
     admin_id = models.AutoField( primary_key = True )
     username = models.CharField( default = '', max_length = 254 )
     password = models.CharField( default = '', max_length = 254 )
+    def __str__(self):
+        return ( str( self.pk ) + " - " + self.username )
+
 
 #####################################################################################################################################    
     
@@ -282,15 +294,21 @@ class Team(models.Model):
     message_exchange_frequency =    models.PositiveSmallIntegerField( default = 0 )  # Frequency of message exchanges between Mentor and Mentee
     mentor_response_time =          models.PositiveSmallIntegerField( default = 0  )        # Average response time in between messages sent by Mentor
     mentee_response_time =          models.PositiveSmallIntegerField( default = 0  )        # Average response time in between messages sent by Mentee
+    
+    def __str__(self):
+        #a = Mentor.objects.get( pk = self.mentor_id ).name 
+        #b = Mentee.objects.get( pk = self.mentee_id ).name
+        return ( str( self.pk ) + " - " + Mentor.objects.get( pk = self.mentor_id.pk ).name + " -> Mentors -> " + Mentee.objects.get( pk = self.mentee_id.pk ).name )
+        #return ( str( self.pk ) + " - " +  self.mentor.name   + " -> is the Mentor of -> " +  self.mentee.name )
 
 #####################################################################################################################################
     
-class Meetings(models.Model):
+class Meeting(models.Model):
     team_id =                   models.ForeignKey( Team )
     meeting_id =                models.AutoField( primary_key = True )    
     mentor_meeting_rating =     models.IntegerField( default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)] )
     mentee_meeting_rating =     models.IntegerField( default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)] )   
-    meeting_date = models.DateTimeField( default = django.utils.timezone.now ,blank = True)
+    meeting_date =              models.DateTimeField( default = django.utils.timezone.now ,blank = True)
     TEL = 'Telephone'
     ONL = 'Online'
     F2F = 'Face to Face'
@@ -302,12 +320,16 @@ class Meetings(models.Model):
     meeting = models.CharField( max_length = 15, 
                               choices = MEETING_METHODS,
                               default = F2F )
-                              
+    def __str__(self):
+        return ( str( self.pk ) + " - " + str( self.team_id ) + " - " + str( self.meeting_date ) )                          
 #####################################################################################################################################                              
                               
-class Goals(models.Model):
-    team_id =       models.ForeignKey( Team )
+class Goal(models.Model):
+    team_id =          models.ForeignKey( Team )
     goal_id =       models.AutoField( primary_key = True )
     goal_name =     models.CharField( default = '', max_length = 254 )
     goal_achieved = models.IntegerField( default = 0, validators=[MinValueValidator(0), MaxValueValidator(5)] )   
     goal_date =     models.DateTimeField( default = django.utils.timezone.now, blank = True )
+    
+    def __str__(self):
+        return ( str( self.pk ) + " - " + Team.objects.get( pk = self.team_id.pk ).team_id + " - " + self.goal_name )    
