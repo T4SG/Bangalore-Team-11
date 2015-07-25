@@ -9,6 +9,8 @@ class Mentor(models.Model):
     age =           models.IntegerField( default = 0 )
     native_city =   models.CharField( default = '',max_length = 254 )
     current_city =  models.CharField( default = '', max_length = 254 )
+    languages =     models.CharField( default = '', max_length = 254 )
+    hobbies =       models.CharField( default = '', max_length = 254 )
     
     # Module to Determine Gender
     M = 'Male'
@@ -39,6 +41,8 @@ class Mentee(models.Model):
     age =           models.IntegerField( default = 0  )
     native_city =   models.CharField( default = '', max_length = 254 )
     current_city =  models.CharField( default = '', max_length = 254 )
+    languages =     models.CharField( default = '', max_length = 254 )
+    hobbies =       models.CharField( default = '', max_length = 254 )
     
     # Module to Determine Gender
     M = 'Male'
