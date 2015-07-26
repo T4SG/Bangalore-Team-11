@@ -10,6 +10,7 @@ def index(request):
 class new_mentor( request ):
     if request.method == "GET":
         print("GOT GET")
+        return HttpResponse("Okay")
     elif request.method == "POST":
         print('GOT POST')
         print("request.form.items()")
