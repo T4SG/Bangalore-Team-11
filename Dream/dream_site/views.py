@@ -30,7 +30,7 @@ def new_mentor( request ):
         pno = request.POST['phone-number']
         unm = request.POST['user-name']
         n2  = request.POST['form-last-name']
-        Mentor.objects.create( name = ( n1 + " " + n2 ), age = , native_city  = ncy )
+        Mentor.objects.create( name = ( n1 + " " + n2 ), age =  , native_city  = ncy, address = ad, gender = gen, email = eml, primary_language = l1, secondary_language = l2, other_languages = l3, company = com, phone )
         return HttpResponse("Okay")
     
 
