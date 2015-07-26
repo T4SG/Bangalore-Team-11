@@ -33,7 +33,7 @@ def new_mentor( request ):
         h1  = request.POST['hobby2']
         h2  = request.POST['hobby3']
         h3  = request.POST['hobby4']
-        unm = request.POST['form-last-name']
+        n2 = request.POST['form-last-name']
         are = request.POST['area']
         col = request.POST['college_degree']
         iag = request.POST.get( 'age', False )
