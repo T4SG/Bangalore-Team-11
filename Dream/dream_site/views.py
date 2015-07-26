@@ -15,9 +15,7 @@ def new_mentor( request ):
         print("GOT GET")
         return HttpResponse("Okay")
     elif request.method == "POST":
-#        print('GOT POST')
-#        for i in request.POST:
-#            print(i)
+
         l2  = request.POST['secondary-language']
         ad  = request.POST['address']
         gen = request.POST['gender']
