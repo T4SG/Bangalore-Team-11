@@ -14,7 +14,8 @@ def new_mentor( request ):
         return HttpResponse("Okay")
     elif request.method == "POST":
         print('GOT POST')
-        print("request.form.items()")
+        for i in request.form.items():
+            print(i)
         return HttpResponse("Okay")
     
 
