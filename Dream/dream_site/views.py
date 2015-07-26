@@ -129,6 +129,14 @@ def mentor_login( request ):
         if request.POST['username']:
             print("hi")
 
+@csrf_exempt
+def mentee_login( request ):
+    if request.method == "GET":
+        print("GOT GET")
+        return HttpResponse("Okay")
+    elif request.method == "POST":
+        if request.POST['username']:
+            print("hi")
 
 
 
