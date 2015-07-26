@@ -40,7 +40,26 @@ def new_mentor( request ):
         col = request.POST['college_degree']
         iag = request.POST['age']
         ccy = request.POST['form-current-city']
-        Mentor.objects.create( name = ( n1 + " " + n2 ), age =  , native_city  = ncy, address = ad, gender = gen, email = eml, primary_language = l1, secondary_language = l2, other_languages = l3, company = com, phone_number = pno, password = pw, hobby_1 = h1, hobby_2 = h2, hobby_3 = h3, hobby_4 = h4, area = are, college_degree = col, age = iag, current_city = ccy )
+        Mentor.objects.create(  name = ( n1 + " " + n2 ), 
+                                native_city  = ncy, 
+                                address = ad, 
+                                gender = gen, 
+                                email = eml, 
+                                primary_language = l1, 
+                                secondary_language = l2, 
+                                other_languages = l3, 
+                                company = com, 
+                                phone_number = pno, 
+                                password = pw, 
+                                hobby_1 = h1, 
+                                hobby_2 = h2, 
+                                hobby_3 = h3, 
+                                hobby_4 = h4, 
+                                area = are, 
+                                college_degree = col, 
+                                age = iag, 
+                                current_city = ccy 
+                              )
         return HttpResponse("Okay")
     
 
@@ -75,10 +94,26 @@ def new_mentee( request ):
         pno = request.POST['phone-number']
         unm = request.POST['user-name']
         n2  = request.POST['form-last-name']
-        Mentee.objects.create( name = ( n1 + " " + n2 ), age = age, native_city  = ncy,current_city = ccy,
-								gender = gen, primary_language = l1, secondary_language = l2,other_languages = l3,
-								college_degree = clg ,hobby_1 = h1,hobby_2 = h2,hobby_3 = h3,hobby_4 = h4,
-								  college = clg, phone_number = pno , area = ar,address = ad,
-								 email = eml,username = unm, password = pw)
+        Mentee.objects.create(  name = ( n1 + " " + n2 ), 
+                                age = iae, 
+                                native_city  = ncy,
+                                current_city = ccy,
+								gender = gen, 
+								primary_language = l1, 
+								secondary_language = l2,
+								other_languages = l3,
+								college_degree = clg ,
+								hobby_1 = h1,
+								hobby_2 = h2,
+								hobby_3 = h3,
+								hobby_4 = h4,
+								college = clg, 
+								phone_number = pno, 
+								area = ar,
+								address = ad,
+    							email = eml,
+    							username = unm, 
+    							password = pw
+    					     )
         return HttpResponse("Okay")
 
