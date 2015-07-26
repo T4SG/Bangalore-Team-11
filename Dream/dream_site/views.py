@@ -249,17 +249,11 @@ def mentee_page( request, mentee_id_in ):
                         	<div class="form-top">
            
 
-<h4>Name:</h4>
-&nbsp;&nbsp;&nbsp;
-<h5> %s <h5>
+<h4>Name :     %s</h4>
 <br>
-<h5>Profile:</h5>
-&nbsp;&nbsp;&nbsp;
-<h5> %s <h5>
+<h4>Profile :  %s</h4>
 <br>
-<h6>Gender:</h6>
-&nbsp;&nbsp;&nbsp;
-<h5> %s <h5>
+<h5>Gender:    %s</h5>
 <br>
 Meet The mentee : <input type="text" name="meeting" placeholder="enter date" />
 <br/>
