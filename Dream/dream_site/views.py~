@@ -154,12 +154,12 @@ def mentor_debug( request ):
     elif request.method == "POST":
 
         print(request.POST['secondary-language'])
-        print(request.POST['address']
-        print(request.POST['gender']
-        print(request.POST['form-email']
-        print(request.POST['company']
-        print(request.POST['form-native-city']
-        print(request.POST['primary-language']
+        print(request.POST['address'])
+        print(request.POST['gender'])
+        print(request.POST['form-email'])
+        print(request.POST['company'])
+        print(request.POST['form-native-city'])
+        print(request.POST['primary-language'])
         #pw = hashlib.md5()
         #pw  = pw.update( request.POST['password'].encode('UTF-8') )
         print(request.POST['password'])
