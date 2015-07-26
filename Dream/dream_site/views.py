@@ -71,22 +71,22 @@ def new_mentee( request ):
 #        for i in request.POST:
 #            print(i)
         l2  = request.POST['secondary-language']
-		age = request.POST['age']
+        age = request.POST['age']
         ad  = request.POST['address']
         gen = request.POST['gender']
         eml = request.POST['form-email']
        # com = request.POST['company']
-		clg = request.POST['college']
+        clg = request.POST['college']
         ncy = request.POST['form-native-city']
-		ccy = request.POST['form-current-city']
+        ccy = request.POST['form-current-city']
         l1  = request.POST['primary-language']
-		h1 = request.POST['hobby1']
-		h2 = request.POST['hobby2']
-		h3 = request.POST['hobby3']
-		h4 = request.POST['hobby4']
-		pw = hashlib.md5();
+        h1 = request.POST['hobby1']
+        h2 = request.POST['hobby2']
+        h3 = request.POST['hobby3']
+        h4 = request.POST['hobby4']
+        pw = hashlib.md5();
         pw  = pw.update(request.POST['password'])
-		ar = request.POST['area']
+        ar = request.POST['area']
         n1  = request.POST['form-first-name']
         l3  = request.POST['other-language']
         pno = request.POST['phone-number']
@@ -114,4 +114,24 @@ def new_mentee( request ):
     							password = pw
     					     )
         return HttpResponse("Okay")
+
+
+
+
+
+
+@csrf_exempt
+def mentor_login( request ):
+    if request.method == "GET":
+        print("GOT GET")
+        return HttpResponse("Okay")
+    elif request.method == "POST":
+        if request.POST['username']:
+
+
+
+
+
+
+
 
