@@ -179,12 +179,14 @@ def mentor_debug( request ):
         print(request.POST[ 'form-current-city'])
         return HttpResponse("Okay")
         
+def mentor_page( request, mentor_id_in ):
+    obj = Mentor.objects.get( pk == mentor_id_in )
+    return HttpResponse("200 Ok")
         
         
-        
-def mentee_page( request, mentor_id_in ):
+def mentee_page( request, mentee_id_in ):
     obj = Mentee.objects.get( pk == mentee_id_in )
-    htmp_page = """<!DOCTYPE html>
+    html_page = """<!DOCTYPE html>
 <html lang="en">
 
     <head>
@@ -296,10 +298,5 @@ Meet The mentee : <input type="text" name="meeting" placeholder="enter date" />
 
     </body>
 
-</html>"""%(obj.name, obj.college_degree, obj.gender)    
-        
-        
-        
-        
-        
-
+</html>"""%(obj.name, obj.college_degree, obj.gender)
+    return HttpResponse( html_page )
