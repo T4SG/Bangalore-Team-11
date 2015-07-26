@@ -249,13 +249,18 @@ def mentee_page( request, mentee_id_in ):
                         	<div class="form-top">
            
 
-<h6>Name:</h6>
-<label id= %s ></label><br />
-<h6>Profile:</h6>
-<label id= %s ></label><br />
+<h4>Name:</h4>
+&nbsp;&nbsp;&nbsp;
+<h5> %s <h5>
+<br>
+<h5>Profile:</h5>
+&nbsp;&nbsp;&nbsp;
+<h5> %s <h5>
+<br>
 <h6>Gender:</h6>
-<label id= %s ></label><br />
-
+&nbsp;&nbsp;&nbsp;
+<h5> %s <h5>
+<br>
 Meet The mentee : <input type="text" name="meeting" placeholder="enter date" />
 <br/>
 <input type="submit" name="datesubmit" value="submit"><br/>
@@ -298,5 +303,5 @@ Meet The mentee : <input type="text" name="meeting" placeholder="enter date" />
 
     </body>
 
-</html>"""%("\"" + obj.name + "\"", "\"" + obj.college_degree + "\"", "\""+ obj.gender+"\"")
+</html>"""%( obj.name, obj.college_degree, obj.gender )
     return HttpResponse( html_page )
