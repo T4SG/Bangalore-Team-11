@@ -253,7 +253,15 @@ def mentee_page( request, mentee_id_in ):
 <br>
 <h4>Profile :  %s</h4>
 <br>
-<h5>Gender:    %s</h5>
+<h4>Gender:    %s</h4>
+<br>
+<h5>Hobby 1 :    %s</h5>
+<br>
+<h5>Hobby 2 :    %s</h5>
+<br>
+<h5>Hobby 3 :    %s</h5>
+<br>
+<h5>Hobby 4 :    %s</h5>
 <br>
 Meet The mentee : <input type="text" name="meeting" placeholder="enter date" />
 <br/>
@@ -277,6 +285,8 @@ Meet The mentee : <input type="text" name="meeting" placeholder="enter date" />
                         </div>
                     </div>
                     
+                    
+
                         </div>
                     </div>
                 </div>
@@ -297,5 +307,5 @@ Meet The mentee : <input type="text" name="meeting" placeholder="enter date" />
 
     </body>
 
-</html>"""%( obj.name, obj.college_degree, obj.gender )
+</html>"""%( obj.name, obj.college_degree, obj.gender, obj.hobby_1, obj.hobby_2, obj.hobby_3, obj.hobby_4 )
     return HttpResponse( html_page )
