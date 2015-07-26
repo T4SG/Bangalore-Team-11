@@ -81,7 +81,7 @@ def new_mentee( request ):
        # com = request.POST['company']
         clg = request.POST['college']
         ncy = request.POST['form-native-city']
-        ccy = request.POST.get( 'form-current-city', False )
+        ccy = request.POST[ 'form-current-city' ]
         l1  = request.POST['primary-language']
         h1 = request.POST['hobby1']
         h2 = request.POST['hobby2']
