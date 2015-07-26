@@ -307,5 +307,10 @@ Meet The mentee : <input type="text" name="meeting" placeholder="enter date" />
 
     </body>
 
-</html>"""%( obj.name, obj.college_degree, obj.gender )
+</html>"""%( obj.name, obj.college_degree, obj.gender, obj.hobby_1, obj.hobby_2, obj.hobby_3, obj.hobby_4 )
     return HttpResponse( html_page )
+    
+    
+    
+    
+    
