@@ -127,7 +127,7 @@ def mentor_login( request ):
         return HttpResponse("Okay")
     elif request.method == "POST":
         if request.POST['username']:
-
+            print("hi")
 
 
 
