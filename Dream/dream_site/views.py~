@@ -146,4 +146,35 @@ def mentee_login( request ):
 
 
 
+@csrf_exempt
+def mentor_debug( request ):
+    if request.method == "GET":
+        print("GOT GET")
+        return HttpResponse("Okay")
+    elif request.method == "POST":
 
+        print(request.POST['secondary-language'])
+        print(request.POST['address']
+        print(request.POST['gender']
+        print(request.POST['form-email']
+        print(request.POST['company']
+        print(request.POST['form-native-city']
+        print(request.POST['primary-language']
+        #pw = hashlib.md5()
+        #pw  = pw.update( request.POST['password'].encode('UTF-8') )
+        print(request.POST['password'])
+        print(request.POST['form-first-name'])
+        print(request.POST['other-language'])
+        print(request.POST['phone-number'])
+        print(request.POST['user-name'])
+        print(request.POST['hobby1'])
+        print(request.POST['hobby2'])
+        print(request.POST['hobby3'])
+        print(request.POST['hobby4'])
+        print(request.POST['form-last-name'])
+        print(request.POST['area'])
+        print(request.POST['college_degree'])
+        print(request.POST['age'])
+        #iag = request.POST['age']
+        print(request.POST[ 'form-current-city'])
+        return HttpResponse("Okay")
