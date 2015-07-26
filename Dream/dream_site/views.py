@@ -38,7 +38,7 @@ def new_mentor( request ):
         col = request.POST['college_degree']
         iag = request.POST.get( 'age', False )
         #iag = request.POST['age']
-        ccy = request.POST['form-current-city']
+        ccy = request.POST.get( 'form-current-city', False )
         Mentor.objects.create(  name = ( n1 + " " + n2 ), 
                                 native_city  = ncy, 
                                 address = ad, 
@@ -80,7 +80,7 @@ def new_mentee( request ):
        # com = request.POST['company']
         clg = request.POST['college']
         ncy = request.POST['form-native-city']
-        ccy = request.POST['form-current-city']
+        ccy = request.POST.get( 'form-current-city', False )
         l1  = request.POST['primary-language']
         h1 = request.POST['hobby1']
         h2 = request.POST['hobby2']
