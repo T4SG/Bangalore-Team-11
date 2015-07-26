@@ -7,7 +7,7 @@ import requests
 def index(request):
     return HttpResponse("Dream Site Index Page")
     
-class new_mentor( request ):
+def new_mentor( request ):
     if request.method == "GET":
         print("GOT GET")
         return HttpResponse("Okay")
