@@ -185,7 +185,7 @@ def mentor_page( request, mentor_id_in ):
         
         
 def mentee_page( request, mentee_id_in ):
-    obj = Mentee.objects.get( pk == mentee_id_in )
+    obj = Mentee.objects.get( mentee_id == mentee_id_in )
     html_page = """<!DOCTYPE html>
 <html lang="en">
 
