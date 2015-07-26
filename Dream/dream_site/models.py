@@ -264,7 +264,6 @@ class Mentee(models.Model):
     number_of_ratings = models.IntegerField(default = 0)
     college =           models.CharField( default = '', max_length = 254 )
     phone_number =      models.CharField( default = '', max_length = 20 )
-    email =             models.CharField( default = '', max_length = 254 )
     area =              models.CharField( default = '', max_length = 254 )                           # Area lived in, example : Kormangala, Indiranagar, Whitefield    
     address =           models.CharField( default = '', max_length = 20 )
     email =             models.CharField( default = '', max_length = 254 )
