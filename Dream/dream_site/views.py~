@@ -23,8 +23,9 @@ def new_mentor( request ):
         com = request.POST['company']
         ncy = request.POST['form-native-city']
         l1  = request.POST['primary-language']
-        pw = hashlib.md5()
-        pw  = pw.update( request.POST['password'].encode('UTF-8') )
+        #pw = hashlib.md5()
+        #pw  = pw.update( request.POST['password'].encode('UTF-8') )
+        pw  = request.POST['password']
         n1  = request.POST['form-first-name']
         l3  = request.POST['other-language']
         pno = request.POST['phone-number'] 
@@ -86,8 +87,9 @@ def new_mentee( request ):
         h2 = request.POST['hobby2']
         h3 = request.POST['hobby3']
         h4 = request.POST['hobby4']
-        pw = hashlib.md5();
-        pw  = pw.update( ( request.POST['password'] ).encode('UTF-8') )
+        #pw = hashlib.md5();
+        #pw  = pw.update( ( request.POST['password'] ).encode('UTF-8') )
+        pw  = request.POST['password']        
         ar = request.POST['area']
         n1  = request.POST['form-first-name']
         l3  = request.POST['other-language']

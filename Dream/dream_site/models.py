@@ -7,8 +7,8 @@ import django.utils.timezone
 class Mentor(models.Model):
     mentor_id =     models.AutoField( primary_key = True )
     name =          models.CharField( default = '', max_length = 254 )
-    age =           models.IntegerField( validators=[MinValueValidator(0), MaxValueValidator(90)])
-    native_city =   models.CharField( default = '',max_length = 254 )
+    age =           models.IntegerField( validators = [MinValueValidator(0), MaxValueValidator(90)])
+    native_city =   models.CharField( default = '', max_length = 254 )
     current_city =  models.CharField( default = '', max_length = 254 )
     
     # Module to Determine Gender
